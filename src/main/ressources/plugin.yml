@@ -1,0 +1,12 @@
+name: ${project.name}
+author: ${project.organization.name}
+version: ${project.version}
+
+main: ${bukkitMain}
+
+depend: ["PowerNBT"]
+
+commands:
+    ctm:
+        description: "base continuum command"
+        usage: "/ctm <subcommand>"
