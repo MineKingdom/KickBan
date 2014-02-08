@@ -9,10 +9,15 @@ import net.minekingdom.kickban.manager.PlayerManager;
 public class KickBan extends Plugin {
 	
 	private PlayerManager playerManager;
+	private static KickBan instance;
+	
 	
 	@Override
 	public void onEnable() {
+		instance = this;
+		this.getDataFolder().mkdirs();
 		this.playerManager = new PlayerManager();
+		this.playerManager.load();
 		this.getProxy().getPluginManager().registerListener(this, new KickBanListener(this));
 		this.getProxy().getPluginManager().registerCommand(this, new KickCommand());
 		this.getProxy().getPluginManager().registerCommand(this, new BanCommand(this));
@@ -21,10 +26,14 @@ public class KickBan extends Plugin {
 	
 	@Override
 	public void onDisable() {
-		
+		this.playerManager.save();
 	}
 	
 	public PlayerManager getPlayerManager() {
 		return this.playerManager;
+	}
+	
+	public static KickBan getInstance() {
+		return instance;
 	}
 }

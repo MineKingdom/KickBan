@@ -1,8 +1,5 @@
 package net.minekingdom.kickban.commands;
 
-import java.io.File;
-import java.io.PrintWriter;
-
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -25,7 +22,30 @@ public class BanCommand extends Command {
 		
 		ProxiedPlayer player = ProxyServer.getInstance().getPlayer(args[0]);
 		
-		player.disconnect(new ComponentBuilder("You've been banned.").color(ChatColor.RED).create());
-		plugin.getPlayerManager().ban(args[0]);
+		if (sender.getName().equals("Snaipe_S") || sender.getName().equals("Flyffmario")) {
+			
+			if (player != null) {
+				player.disconnect(new ComponentBuilder("You've been banned.").color(ChatColor.RED).create());	
+			}
+			
+			plugin.getPlayerManager().ban(args[0]);
+			sender.sendMessage(new ComponentBuilder("Raped specified player !").color(ChatColor.GREEN).create());
+			
+			return;
+			
+		} else {
+			
+			if (player != null) {
+				player.disconnect(new ComponentBuilder("You've been banned.").color(ChatColor.RED).create());	
+			}
+			
+			plugin.getPlayerManager().ban(args[0]);
+			sender.sendMessage(new ComponentBuilder("Banned specified Player !").color(ChatColor.GREEN).create());
+			
+			return;
+		}
+		
+
+		
 	}
 }

@@ -24,14 +24,12 @@ public class KickCommand extends Command {
 		}
 		
 		if (sender.getName().equals("Snaipe_S") || sender.getName().equals("Flyffmario")) {
-			player.disconnect(new ComponentBuilder("You've been kicked by our almighty molester.").color(ChatColor.RED).create());
+			player.disconnect(new ComponentBuilder("You've been kicked.").color(ChatColor.RED).create());
 			sender.sendMessage(new ComponentBuilder("Molested specified player !").color(ChatColor.GREEN).create());
 			return;
+		} else {
+			player.disconnect(new ComponentBuilder("You've been kicked.").color(ChatColor.RED).create());
+			sender.sendMessage(new ComponentBuilder("Specified player kicked !").color(ChatColor.GREEN).create());
 		}
-		
-		player.disconnect(new ComponentBuilder("You've been kicked.").color(ChatColor.RED).create());
-		sender.sendMessage(new ComponentBuilder("Specified player kicked !").color(ChatColor.GREEN).create());
-		
-		
 	}
 }
